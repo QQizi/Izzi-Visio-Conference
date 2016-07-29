@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://127.0.0.1:1199/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="assets/css/main.css"/>
+</head>
+<body>
+
+<div class="app-container">
+    <div class="app-content">
+        <div id="popin-call" style="position: absolute;top:50%;left:50%;transform:translateY(-50%) translateX(-50%);width: 200px;height: 200px;background-color: black;color: white;display: none;">
+            <p></p>
+            <button id="accept-call">accept call</button>
+            <button id="refuse-call">refuse call</button>
+        </div>
+        <div style="width: 150px;">
+            <label for="pseudo">Pseudo</label>
+            <input id="pseudo" type="text" class="validate">
+            <button type="submit" id="submitPseudo" onclick="app.validatePseudo()">Login</button>
+        </div>
+        <div style="width: 350px;height: 150px;">
+            <video id="localVideo" style="width: 150px;height: 150px;float:left;" muted></video>
+            <video id="remoteVid" style="width: 150px;height: 150px;float:right;"></video>
+        </div>
+        <div id="liste-users">
+            <p>Connected user : </p>
+            <ul class="collection">
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="assets/js/izzivisioconference.js"></script>
+<script src="assets/js/eventHandler.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
