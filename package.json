@@ -1,0 +1,14 @@
+{
+  "name": "Izzi-visio-conference",
+  "version": "1.0.0",
+  "description": "Izzi Visio Conference is the easiest way to set up an audio & video live streaming conference",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^1.4.8"
+  }
+}
