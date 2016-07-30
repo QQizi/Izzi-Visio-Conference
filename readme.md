@@ -7,7 +7,8 @@
 
 ### Basic Usage Example
 
-You can find a fully working exemple in the /example folder. To use it just clone this repo. Use `npm install` then `node socket.js` 
+You can find a fully working exemple in the /example folder. To use it just clone this repo. 
+Use `npm install` then `node socket.js` 
 
 To use Izzi Visio Conference you'll need to handle a bunch of events. You can find an exemple of the server side handle made with node & socket.io in server/socket.js
 
