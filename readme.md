@@ -90,3 +90,10 @@ app.izziVisio.createRemoteConnection({
     }
 });
 ```
+
+Warnings :
+- For Chrome, you'll need an SSL certificat to use this
+
+Coming soon : 
+
+- Crossplateform mobile application friendly
