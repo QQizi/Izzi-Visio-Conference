@@ -104,7 +104,7 @@ var app = {
     },
     callUser : function(idRemote){
 
-        app.global.socket.emit("make_call", { message : 'make_call', id : idRemote, pseudo : app.global.valuePseudo});
+        app.global.socket.emit("make_call", { id : idRemote, pseudo : app.global.valuePseudo});
 
         app.global.idCaller     = idRemote;
     },

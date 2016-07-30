@@ -39,8 +39,10 @@ app.izziVisio = izziVisioConference({
 
 Then there is 2 possibilities : 
 
-- Make a call to an other logged user (app.idCaller) and received the accepted event : 
+- Make a call to an other logged user (app.idCaller) then wait for the accepted event : 
 ```javascript
+app.socket.emit("make_call", { id : idUserCalled, pseudo : 'yourPseudo'});
+
 app.socket.on("accepted_call_event",function(data){
     app.izziVisio.createLocalConnection({
             sendLocalCandidate : function(event){
