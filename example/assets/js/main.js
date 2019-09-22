@@ -19,7 +19,6 @@ var app = {
         app.bind();
     },
     acceptedCall : function(){
-
         app.izziVisio.createLocalConnection({
             sendLocalCandidate : function(event){
                 if(event.candidate){
@@ -107,6 +106,7 @@ var app = {
         app.global.socket.emit("make_call", { id : idRemote, pseudo : app.global.valuePseudo});
 
         app.global.idCaller     = idRemote;
+        app.resize;
     },
     endCall : function(){
         app.global.localConnection.close();
@@ -127,10 +127,6 @@ var app = {
         $("#endCall").css("display","none");
     },
     bind : function(){
-        $(window).bind("resize", function () {
-            app.resize();
-        });
-
         $(document).on( 'click', '.collection-item', function(e){
             app.callUser($(this).attr("data-target"));
         });

@@ -8,8 +8,10 @@ var users = [];
 
 /*SOCKET IO*/
 io.on('connection', function (socket) {
+    console.log("CONNECTION");
 
     socket.on('init_user_media', function(data) {
+        console.log('IN INIT USER MEDIA');
         var user = {
             'pseudo' : data["pseudo"],
             'id'     : socket.id
@@ -21,6 +23,7 @@ io.on('connection', function (socket) {
     });
 
     socket.on('disconnect', function() {
+        console.log("IN DISCONNECT");
         for(var i = 0; i < users.length ; i++){
             if(socket.id == users[i].id){
                 users.splice(i, 1);

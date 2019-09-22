@@ -34,22 +34,21 @@ window.izziVisioConference = function( options ) {
 	_izziVisioConference.izziInitLocalStream = function(){
 
 		_izziVisioConference.params.localVideoElement = document.querySelector(_izziVisioConference.params.localStreamOptions.localVideoElement);
-		var constraints = {audio: _izziVisioConference.params.localStreamOptions.audio == undefined ?true : _izziVisioConference.params.localStreamOptions.audio, video:_izziVisioConference.params.localStreamOptions.video == undefined ?true : _izziVisioConference.params.localStreamOptions.video};
-
+		var constraints = {audio: _izziVisioConference.params.localStreamOptions.audio === undefined ?true : _izziVisioConference.params.localStreamOptions.audio, video:_izziVisioConference.params.localStreamOptions.video == undefined ?true : _izziVisioConference.params.localStreamOptions.video};
 		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
 		navigator.getUserMedia(constraints,_izziVisioConference.izziInitLocalStreamSuccess,_izziVisioConference.izziInitLocalStreamError);
 	};
 
 	_izziVisioConference.izziInitLocalStreamSuccess = function(stream){
 		_izziVisioConference.params.localStreamOptions.localStreamInited();
-		_izziVisioConference.params.localVideoElement.src = URL.createObjectURL(stream);
+		_izziVisioConference.params.localVideoElement.srcObject = stream;
 		_izziVisioConference.params.localStream = stream;
 		_izziVisioConference.params.localVideoElement.play();
 	};
 
 	_izziVisioConference.izziInitLocalStreamError = function(){
 		//TODO ERROR HANDLER
+		console.log("In izziInitLocalStreamError ");
 	};
 
 	/*LOCAL CONNECTION*/
@@ -94,7 +93,7 @@ window.izziVisioConference = function( options ) {
 
 	_izziVisioConference.remoteStream = function(event){
 		_izziVisioConference.params.remoteVideoElement = document.querySelector(_izziVisioConference.params.remoteConnectionOptions.remoteVideoElement);
-		_izziVisioConference.params.remoteVideoElement.src = URL.createObjectURL(event.stream);
+		_izziVisioConference.params.remoteVideoElement.srcObject = event.stream;
 		_izziVisioConference.params.remoteVideoElement.play();
 	};
 
@@ -127,8 +126,11 @@ window.izziVisioConference = function( options ) {
 			});
 		},
 		setLocalCandidate : function(data){
+			console.log(data);
+			console.log(data.candidate.candidate);
+			console.log(data.candidate.sdpMLineIndex);
 			var newCandidate = new RTCIceCandidate({
-				sdpMLineIndex: data.candidate.label,
+				sdpMLineIndex: data.candidate.sdpMLineIndex,
 				candidate: data.candidate.candidate
 			});
 
@@ -150,7 +152,7 @@ window.izziVisioConference = function( options ) {
 		},
 		setRemoteCandidate : function(data){
 			var newCandidate = new RTCIceCandidate({
-				sdpMLineIndex: data.candidate.label,
+				sdpMLineIndex: data.candidate.sdpMLineIndex,
 				candidate: data.candidate.candidate
 			});
 
